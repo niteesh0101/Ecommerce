@@ -1,0 +1,75 @@
+Spring Boot E-Commerce Application — Project Plan
+Status: Planned documentation. This file describes the intended Spring Boot e-commerce application; it does not describe the existing Weather Forecast App files in this repository as e-commerce functionality.
+Goal
+Build a learning-focused e-commerce REST API with Java and Spring Boot. The project will grow incrementally from a maintainable monolith into a more advanced application as new concepts are implemented.
+Planned technology stack
+Language: Java
+Backend: Spring Boot, Spring Web
+Persistence: Spring Data JPA / Hibernate
+Database: MySQL
+Security: Spring Security with database-backed users and roles; JWT can be added in a later phase
+API testing: Postman
+Build tool: Maven
+Version control: Git and GitHub
+Containerization (later phase): Docker and Docker Compose
+These are intended choices, not a claim that the current repository already contains this stack.
+Planned features
+Product catalog
+Create, list, view, update, and delete products
+Validate required fields and prices
+Support pagination and sorting in a later iteration
+Categories
+Organize products by category
+Define the product/category relationship
+Users and security
+Register users and store passwords securely using a password encoder
+Authenticate users through Spring Security
+Add roles and restrict management endpoints
+Add JWT authentication only after the basic security flow is understood
+Shopping cart
+Add and remove products
+Change item quantities
+Calculate totals on the server
+Orders
+Create orders from a cart
+Preserve product prices at the time of purchase
+Track order status
+Testing and operations
+Unit and integration tests
+Consistent error responses and logging
+API documentation
+Docker-based local development and deployment guidance
+Suggested domain model
+User — account details, encoded password, and role
+Product — name, description, price, stock quantity, and category
+Category — category name and description
+Cart — owner and cart items
+CartItem — product and quantity
+Order — owner, status, totals, and creation timestamp
+OrderItem — product reference, quantity, and unit-price snapshot
+Use database constraints and server-side validation. Store money as a decimal type (for example, Java BigDecimal), not floating point. The exact schema should be finalized as each feature is implemented.
+Proposed implementation roadmap
+Create the Spring Boot project and configure MySQL.
+Implement the Product entity, repository, service, and REST controller.
+Add request validation, exception handling, pagination, and tests.
+Add categories and define relationships.
+Implement database-backed users and Spring Security.
+Add role-based authorization for product-management endpoints.
+Build cart and order workflows with transaction boundaries.
+Add API documentation and integration tests.
+Containerize the application with Docker and document deployment.
+Consider service separation only after the core application is stable.
+Local setup (once the backend is implemented)
+Install a compatible JDK, Maven (or use the Maven wrapper), and MySQL.
+Configure the database URL, username, and password using environment variables or a local, untracked configuration file.
+Never commit real passwords, API keys, or production secrets.
+Start the application with ./mvnw spring-boot:run (Linux/macOS) or mvnw.cmd spring-boot:run (Windows), once a Maven project has been added.
+Verify the implemented endpoints using Postman and the project's tests.
+The repository contents inspected before this document was prepared include a small root README.md and an index.html titled “Weather Forecast App”. No Spring Boot source tree was present in that inspection. This plan is kept in a separate file so those existing files remain unchanged.
+Contribution workflow
+Work on a feature branch rather than directly on main.
+Keep each change focused and use descriptive commit messages.
+Add or update tests with each backend feature.
+Update this document when the implementation materially changes.
+License
+No license is specified here. Add a license after choosing the terms under which the project may be used and redistributed.
